@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        //testPart1And2();
+        testPart1And2();
 
         testPart3();
     }
