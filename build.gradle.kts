@@ -14,8 +14,11 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("org.projectlombok:lombok:1.18.26")
     annotationProcessor("org.projectlombok:lombok:1.18.26")
-//    compileOnly("org.projectlombok:lombok")
-//    annotationProcessor("org.projectlombok:lombok")
+
+    /**
+     * Database
+     */
+    runtimeOnly("org.postgresql:postgresql")
 
 }
 
