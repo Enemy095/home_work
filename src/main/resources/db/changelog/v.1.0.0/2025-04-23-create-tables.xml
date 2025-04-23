@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="2020-03-08-create-table-sequence" author="Enemy095">
+        <createSequence
+                sequenceName="general_sequence"
+                schemaName="public"
+                startValue="1"
+                cacheSize="10"/>
+    </changeSet>
+    <changeSet id="2020-03-08-create-table-product" author="Enemy095">
+        <createTable tableName="product">
+            <column name="id" type="BIGINT" defaultValueSequenceNext="general_sequence">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2020-03-08-create-table-buyer" author="Enemy095">
+        <createTable tableName="buyer">
+            <column name="id" type="BIGINT" defaultValueSequenceNext="general_sequence">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase" type="BIGINT">
+                <constraints nullable="false"
+                             validateForeignKey="true"
+                             referencedTableName="product"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
